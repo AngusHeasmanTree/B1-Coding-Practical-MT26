@@ -2,11 +2,10 @@
 
 After initialising the object with the required constants the action_calculator method calculates the control action from the target and actual positions.
 The constants relating to proportional and derivative control may be set when initialising the class.
-In order to prevent indexing errors a proportional-only control is used on the first time step.
 
 Typical usage example:
     Submarine_PDController = PD_Controller(0.15,0.6)
-    action = Submarine_PDController.action_calculator()
+    action = Submarine_PDController.action_calculator(t,target_position,actual_position)
 """
 
 class PD_Controller:
