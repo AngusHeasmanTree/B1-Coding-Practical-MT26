@@ -8,12 +8,14 @@ Typical usage example:
     action = Submarine_PDController.action_calculator(t,target_position,actual_position)
 """
 
+import numpy as np
+
 class PD_Controller:
-    def __init__(self, K_P, K_D):
+    def __init__(self, K_P: float, K_D: float):
         self.K_P = K_P
         self.K_D = K_D
 
-    def action_calculator(self,t,target_position,actual_position):
+    def action_calculator(self,t,target_position: np.ndarray,actual_position: np.ndarray):
         
         error_position = target_position - actual_position[:, 1]
         action = self.K_P*(error_position[t]) + self.K_D*(error_position[t]-error_position[t-1])
